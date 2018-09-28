@@ -1,8 +1,9 @@
 import re
 textTemp = ""
-# Open/Create a file to append data
+# Open/Create a file to append data output path
 textFile = open('spacex.txt', 'a+')
 
+# Input path
 with open('spacex.csv','Ur') as file:
     for line in file:
 	textTemp = ""
