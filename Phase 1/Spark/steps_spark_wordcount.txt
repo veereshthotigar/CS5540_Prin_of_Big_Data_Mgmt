@@ -1,0 +1,4 @@
+vthotigar@ubuntu:~/hadoop$ cd $SPARK_HOME
+vthotigar@ubuntu:~/spark$ bin/spark-submit run-example JavaWordCount hdfs://localhost:9000/bigdata/health/* &> /home/vthotigar/Desktop/bigdata/spark_output.txt
+vthotigar@ubuntu:~/spark$ 
+
