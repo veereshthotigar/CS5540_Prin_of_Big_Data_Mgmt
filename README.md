@@ -25,15 +25,19 @@
 
 6. simillarly we executed spark word count job for the same input data to process the data. and the out put is in the folder
 
-<
+<blockquote>
 -> We Pushed our hadoop log files , output, commands that we used in the terminal in the form of "steps_hadoop_wordcount.txt" .
-
+</blockquote>
+ <blockquote>
 -> Hadoop folder conains the output and logs generated for the hadoop word count program.
-
+</blockquote>
+<blockquote>
 -> tweetcrawler.py file in folder Python_script contains python code for downloading tweets using keys and saving them into a csv file
-  
+</blockquote>
+<blockquote>
 -> Extract.py file in folder Python_script contains python code for extracting URLs and HashTags from the downloaded tweets into a text file
-
+</blockquote>
+ <blockquote>
 -> Spark folder contains the output and logs of the job submitted.
->
+</blockquote>
 
