@@ -25,6 +25,7 @@
 
 6. simillarly we executed spark word count job for the same input data to process the data. and the out put is in the folder
 
+<hr>
 
       We Pushed our hadoop log files , output, commands that we used in the terminal in the form of "steps_hadoop_wordcount.txt".
 
