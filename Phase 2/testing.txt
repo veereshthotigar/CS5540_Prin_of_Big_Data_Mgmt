@@ -1,0 +1,25 @@
+val query1 = spark.sqlContext.sql("SELECT hashtags,COUNT(*) AS cnt FROM (SELECT explode(entities.hashtags.text) as hashtags FROM health where size(entities.hashtags)>0) GROUP BY hashtags ORDER BY cnt DESC LIMIT 10");
+scala> query1.show(10,false)
+query1.coalesce(1).write.format("com.databricks.spark.csv").option("header","true").save("/home/vthotigar/Desktop/Phase-2/test_output/q1");
+
+val query2 = spark.sqlContext.sql("SELECT urls,COUNT(*) AS cnt FROM (SELECT explode(entities.urls.expanded_url) as urls FROM health where size(entities.urls)>0) GROUP BY urls ORDER BY cnt DESC LIMIT 10");
+query2.show()
+query2.coalesce(1).write.format("com.databricks.spark.csv").option("header","true").save("/home/vthotigar/Desktop/Phase-2/test_output/q2");
+
+val query3 = spark.sqlContext.sql("SELECT user.screen_name as name,size(entities.user_mentions) as u_m FROM health where size(entities.user_mentions)>0 ORDER BY u_m DESC LIMIT 10");
+query3.show()
+query3.coalesce(1).write.format("com.databricks.spark.csv").option("header","true").save("/home/vthotigar/Desktop/Phase-2/test_output/q3");
+
+val query4 =  spark.sqlContext.sql("SELECT hour,COUNT(*) FROM (SELECT substr(created_at,12,2) as hour FROM health) GROUP BY hour ORDER BY hour");
+query4.show()
+query4.coalesce(1).write.format("com.databricks.spark.csv").option("header","true").save("/home/vthotigar/Desktop/Phase-2/test_output/q4");
+
+val query5 = spark.sqlContext.sql("SELECT name,SUM(cnt) as retweet FROM (SELECT quoted_status.user.screen_name AS name,quoted_status.retweet_count AS cntFROM health WHERE quoted_status.retweet_count>0)GROUP BY name ORDER BY retweet DESC LIMIT 10");
+query5.show()
+query5.coalesce(1).write.format("com.databricks.spark.csv").option("header","true").save("/home/vthotigar/Desktop/Phase-2/test_output/q5");
+
+val query6 = spark.sqlContext.sql("SELECT text,COUNT(*) AS cnt FROM (SELECT regexp_replace(text,"\\n"," ") as text FROM health) GROUP BY text ORDER BY cnt DESC LIMIT 10");
+query6.show()
+query6.coalesce(1).write.format("com.databricks.spark.csv").option("header","true").save("/home/vthotigar/Desktop/Phase-2/test_output/q6");
+
+
